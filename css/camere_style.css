@@ -1,0 +1,93 @@
+#banner {
+  background-image: url("../images/camere/cover.jpg");
+}
+
+#intro {
+  padding-top: 120px;
+  padding-bottom: 90px;
+}
+
+#intro p {
+  text-align: center;
+  font-family: 'Cardo', sans-serif;
+  font-size: 25px;
+  display: block;
+  width: 70%;
+  margin: auto;
+}
+
+.img-wrap .cameraImage {
+  width: 100%;
+  margin-bottom: -7px;
+}
+
+/* Thumbnail Animation */
+
+.caption {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.caption::before, .caption::after {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  content: "";
+  opacity: 0;
+  transition: all .3s;
+}
+
+.caption::before {
+  border-top: 2px solid #d3b73e;
+  border-bottom: 2px solid #d3b73e;
+  -webkit-transform: scale(0, 1);
+          transform: scale(0, 1);
+}
+
+.caption::after {
+  border-left: 2px solid #d3b73e;
+  border-right: 2px solid #d3b73e;
+  -webkit-transform: scale(1, 0);
+          transform: scale(1, 0);
+}
+
+.contur-wrap:hover .caption::before, .contur-wrap:hover .caption::after {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+
+.caption:hover {
+  background-color: black;
+  opacity: 0.8;
+}
+
+.camera-ico {
+  position: absolute;
+  width: 20%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -60%);
+          transform: translate(-50%, -60%);
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.caption:hover .camera-ico {
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+/* End Thumbnail Animation */

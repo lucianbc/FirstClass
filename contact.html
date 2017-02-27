@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact</title>
+
+    <script type="text/javascript" src="script/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="script/waypoints.js"></script>
+    <script type="text/javascript" src="script/globals.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,450,500,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Dancing+Script:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Cardo:400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="css/frame.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/contact_style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+
+    <script type="text/javascript">
+      function initialize() {
+        var mapCanvas = document.getElementById('map');
+        var fc = new google.maps.LatLng(46.2506924,26.7943491);
+        // var cen = new google.maps.LatLng(46.2520509,26.7890694);
+        var mapOptions = {
+          scrollwheel: false,
+          center: fc,
+          zoom: 16,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+        map.set('styles', [
+            {
+                "featureType": "all",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "hue": "#ff4400"
+                    },
+                    {
+                        "saturation": -68
+                    },
+                    {
+                        "lightness": -4
+                    },
+                    {
+                        "gamma": 0.72
+                    }
+                ]
+            },
+            {
+                "featureType": "landscape.man_made",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "hue": "#0077ff"
+                    },
+                    {
+                        "gamma": 3.1
+                    }
+                ]
+            },
+            {
+                "featureType": "landscape.man_made",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "saturation": "12"
+                    },
+                    {
+                        "visibility": "off"
+                    }
+                ]
+            },
+            {
+                "featureType": "landscape.natural.landcover",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "saturation": "100"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi.park",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "saturation": -23
+                    },
+                    {
+                        "color": "#b5d0ae"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "visibility": "on"
+                    },
+                    {
+                        "color": "#c06260"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "geometry.stroke",
+                "stylers": [
+                    {
+                        "color": "#803333"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.arterial",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "visibility": "on"
+                    },
+                    {
+                        "saturation": "41"
+                    },
+                    {
+                        "gamma": "4.68"
+                    },
+                    {
+                        "lightness": "18"
+                    },
+                    {
+                        "weight": "3.98"
+                    },
+                    {
+                        "color": "#ce9999"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.arterial",
+                "elementType": "geometry.stroke",
+                "stylers": [
+                    {
+                        "visibility": "on"
+                    },
+                    {
+                        "color": "#b93f3f"
+                    },
+                    {
+                        "weight": "0.71"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.local",
+                "elementType": "geometry.fill",
+                "stylers": [
+                    {
+                        "visibility": "on"
+                    }
+                ]
+            },
+            {
+                "featureType": "transit",
+                "elementType": "labels.text.stroke",
+                "stylers": [
+                    {
+                        "saturation": -64
+                    },
+                    {
+                        "hue": "#ff9100"
+                    },
+                    {
+                        "lightness": 16
+                    },
+                    {
+                        "gamma": 0.47
+                    },
+                    {
+                        "weight": 2.7
+                    }
+                ]
+            },
+            {
+                "featureType": "transit.line",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "lightness": -48
+                    },
+                    {
+                        "hue": "#ff5e00"
+                    },
+                    {
+                        "gamma": 1.2
+                    },
+                    {
+                        "saturation": -23
+                    }
+                ]
+            },
+            {
+                "featureType": "water",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "hue": "#00ccff"
+                    },
+                    {
+                        "gamma": 0.44
+                    },
+                    {
+                        "saturation": -33
+                    }
+                ]
+            },
+            {
+                "featureType": "water",
+                "elementType": "labels.text.fill",
+                "stylers": [
+                    {
+                        "hue": "#007fff"
+                    },
+                    {
+                        "gamma": 0.77
+                    },
+                    {
+                        "saturation": 65
+                    },
+                    {
+                        "lightness": 99
+                    }
+                ]
+            },
+            {
+                "featureType": "water",
+                "elementType": "labels.text.stroke",
+                "stylers": [
+                    {
+                        "gamma": 0.11
+                    },
+                    {
+                        "weight": 5.6
+                    },
+                    {
+                        "saturation": 99
+                    },
+                    {
+                        "hue": "#0091ff"
+                    },
+                    {
+                        "lightness": -86
+                    }
+                ]
+            }
+        ]);
+        var marker = new google.maps.Marker({
+          position: fc,
+          map: map,
+          title: 'Pensiunea First Class'
+        });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+  </head>
+  <body>
+    <div class="preloader">
+      <div class="loader">
+        <img src="images/logo/logo_loader.png" alt="" />
+        <span class="pulseLoad" id="first"></span>
+        <span class="pulseLoad" id="second"></span>
+        <span class="pulseLoad" id="third"></span>
+        <span class="static"></span>
+      </div>
+    </div>
+
+    <div class="nav-bar" id="navBurger">
+      <div id="hamburger">
+        <span></span>
+      </div>
+      <p>
+        meniu
+      </p>
+    </div>
+
+    <div id="nav" class="invisible inexistent">
+      <div class="menu-wrapper">
+        <ul>
+          <a href="index.html"><li>1. Acasă</li></a>
+          <a href="restaurant.html"><li>2. Restaurant</li></a>
+          <a href="camere.html"><li>3. Camere</li></a>
+          <a href="piscina.html"><li>4. Piscină</li></a>
+          <a href="contact.html"><li>5. Contact</li></a>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cover" id="banner">
+      <div class="cover-header">
+        Contact
+      </div>
+    </div>
+
+    <div class="contact-content os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+      <p>
+        Pensiunea First Class vă așteaptă într-un cadru deosebit, la ieșirea din Onești spre Adjud, pe strada Redului 130.
+      </p>
+      <p>
+        Te așteptăm să te convingi că pensiunea First Class este oaza ta de liniște și relaxare.
+      </p>
+    </div>
+
+    <div id="map" class="os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+    </div>
+
+    <div class="container custom" id="contact-options">
+      <div class="row" style="line-height: 1;">
+        <div class="columns column-half">
+          <h2 class="contact-title os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">Sunați-ne:</h2>
+          <div class="contact-btn os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+            <svg viewBox="0 0 146 146">
+              <circle class="contur" fill="none" stroke="#000000" stroke-width="3" stroke-miterlimit="10" cx="73" cy="73" r="71" transform="rotate(-90, 73, 73)"/>
+              <path fill="none" stroke="#000000" stroke-miterlimit="10" d="M142.5 73c0 38.39-31.12 69.5-69.5 69.5 -38.37 0-69.5-31.11-69.5-69.5C3.5 34.63 34.63 3.5 73 3.5 111.38 3.5 142.5 34.63 142.5 73z"/>
+            </svg>
+            <img src="images/icons/phone.png" alt="" />
+          </div>
+          <div class="date-contact os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+            <p>
+              T: 0744 939 464
+            </p>
+            <p>
+              T: 0742 252 332 (recepție)
+            </p>
+          </div>
+        </div>
+        <div class="columns column-half">
+          <h2 class="contact-title os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">Scrieți-ne:</h2>
+          <div class="contact-btn os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+            <svg viewBox="0 0 146 146">
+              <circle class="contur" fill="none" stroke="#000000" stroke-width="3" stroke-miterlimit="10" cx="73" cy="73" r="71" transform="rotate(-90, 73, 73)"/>
+              <path fill="none" stroke="#000000" stroke-miterlimit="10" d="M142.5 73c0 38.39-31.12 69.5-69.5 69.5 -38.37 0-69.5-31.11-69.5-69.5C3.5 34.63 34.63 3.5 73 3.5 111.38 3.5 142.5 34.63 142.5 73z"/>
+            </svg>
+            <img src="images/icons/mail.png" alt="" />
+          </div>
+          <div class="date-contact os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+            <p id="email-p">
+              M: tismanaru_edita@yahoo.com
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer id="footer">
+      <div class="container" style="width: 90%;">
+        <img src="images/icons/firstclass.png" width="200px;" class="os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s" alt="" />
+        <div class="row">
+          <div class="columns column-sixth os-animation" data-os-animation="fadeInLeft" data-os-animation-delay="0s">
+            <section class="contact">
+              <h3>Onești - Bacău</h3>
+              <h3>Strada Redului, 130</h3>
+            </section>
+          </div>
+          <div class="columns column-sixth os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+            <ul class="footer-list">
+              <li><a href="restaurant.html">Restaurant</a></li>
+              <li><a href="camere.html">Camere</a>l</a></li>
+              <li><a href="piscina.html">Piscina</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="columns column-third os-animation" data-os-animation="fadeInUp" data-os-animation-delay="0s">
+            <section class="contact">
+              <h3>T: 0742 252 332 (recepție)</h3>
+              <h3>T: 0744 939 464</h3>
+              <h3>M: tismanaru_edita@yahoo.com</h3>
+            </section>
+          </div>
+          <div class="columns column-fourth os-animation" data-os-animation="fadeInRight" data-os-animation-delay="0s" style="padding-top:0;">
+            <h2 id="soc-media-title">Social Media:</h2>
+            <section class="social-media">
+              <a class="anim-btn media-btn" href="https://www.facebook.com/pages/First-Class/259720317383626?fref=ts">
+                <svg viewBox="0 0 146 146">
+                  <circle class="contur" fill="none" stroke="#000000" stroke-width="3" stroke-miterlimit="10" cx="73" cy="73" r="71"  transform="rotate(-90, 73, 73)"/>
+                  <path fill="none" stroke="#000000" stroke-miterlimit="10" d="M142.5 73c0 38.39-31.12 69.5-69.5 69.5 -38.37  0-69.5-31.11-69.5-69.5C3.5 34.63 34.63 3.5 73 3.5 111.38 3.5 142.5 34.63 142.5 73z"/>
+                </svg>
+                <div class="icon-div" id="facebook-icon">
+                </div>
+                <div class="icon-div" id="facebook-icon-white">
+                </div>
+              </a>
+              <a class="anim-btn media-btn" href="https://www.instagram.com">
+                <svg viewBox="0 0 146 146">
+                  <circle class="contur" fill="none" stroke="#000000" stroke-width="3" stroke-miterlimit="10" cx="73" cy="73" r="71"  transform="rotate(-90, 73, 73)"/>
+                  <path fill="none" stroke="#000000" stroke-miterlimit="10" d="M142.5 73c0 38.39-31.12 69.5-69.5 69.5 -38.37  0-69.5-31.11-69.5-69.5C3.5 34.63 34.63 3.5 73 3.5 111.38 3.5 142.5 34.63 142.5 73z"/>
+                </svg>
+                <div class="icon-div" id="insta-icon">
+                </div>
+                <div class="icon-div" id="insta-icon-white">
+                </div>
+              </a>
+            </section>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
